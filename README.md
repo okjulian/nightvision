@@ -87,6 +87,41 @@ Screen
 With every component already identified, it is finally time to build them!
 
 ### Splash
+Splash page is a full screen dark blue page with a centered logo.
+
+#### Full screen
+To make it cover the entire viewport I used css to set its width to 100vw (viewport width units) and height to 100vh (viewport height units).
+
+#### Dark blue background
+Since we are using [styled jsx](https://github.com/zeit/styled-jsx) as our component based CSS solution, we can easily store our app's colors in a js file and interpolate those values onto our component. This means we can have our colors neatly organized and will never have to copy paste a color hex number again.
+
+```css
+  .Splash {
+    background-color: ${colors.darkBlue};
+  }
+```
+
+### Logo
+
+To create the Logo I used the logo I created in the design step, exported it to svg, optimized it with [SVG Optimizer](http://petercollingridge.appspot.com/svg-optimiser) and then used its markup in a React component. Now I can easily parameterize the logo using JSX!
+
+```js
+import React from 'react';
+import classNames from 'classnames';
+
+export default ({ color = '#898F9A', className }) =>
+  <svg className={classNames('Logo', className)} viewBox="0 0 145 127">
+    <g fill="none">
+      <g fill={color}>
+        <path d="M124 27.2C131.3 27.2 137.4 21.5 137.4 14.1 137.4 6.6 131.3 0.9 124 0.9 116.8 0.9 110.7 6.6 110.7 14.1 110.7 21.5 116.8 27.2 124 27.2M95.2 107.4C95.2 119 101.5 126.7 114.8 126.7 125.9 126.7 134.9 120.1 141.3 109.5L144.8 95.4C137.2 112.2 123.2 112.5 121.5 112.1 118.6 111.5 116.8 110.4 116.8 106.7 116.8 104.5 117.2 101.4 118.2 97.7L132.9 39.3 95.6 39.3 90.9 56.7 106.4 56.7 96.4 97.6C95.6 100.9 95.2 104.5 95.2 107.4Z" />
+        <path d="M0.1 125.3L22.1 125.3 34.6 75C37.7 62.2 43.8 55.6 53 55.6 60.3 55.6 64.8 60.1 64.8 67.6 64.8 69.8 64.6 72.1 63.8 74.7L57.4 97.8C56.4 101.1 56 104.5 56 107.6 56 118.6 62.4 126.6 76 126.6 87.5 126.6 96.8 119.2 101.9 101.3L98.3 100.1C94 112.1 85.2 112.1 82.3 112.1 79.3 112.1 77.7 110.1 77.7 106.2 77.7 104.5 78.1 102.5 78.7 100.1L85 77.6C86.6 72.3 87.2 67.6 87.2 63.3 87.2 46.4 77 37.6 64.6 37.6 53 37.6 41.3 48.1 35.4 59.1L39.7 39.3 6.2 39.3 1.5 56.7 17.2 56.7 7.5 95.4 0.1 125.3Z" />
+      </g>
+    </g>
+  </svg>;
+```
+
+[Here](https://nightvision-kokplpifzt.now.sh/) is a live version of this step, and [here](https://nightvision-kokplpifzt.now.sh/_src) is the corresponding source code.
+
 ### Project
 ### Screen
 
