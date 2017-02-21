@@ -87,7 +87,7 @@ Screen
 With every component already identified, it is finally time to build them!
 
 ### Splash
-Splash page is a full screen dark blue page with a centered logo.
+[Splash page](https://nightvision-kokplpifzt.now.sh/_src/?f=src%2Fpages%2FSplash.js) is a full screen dark blue page with a centered logo.
 
 #### Full screen
 To make it cover the entire viewport I used css to set its width to 100vw (viewport width units) and height to 100vh (viewport height units).
@@ -103,7 +103,7 @@ Since we are using [styled jsx](https://github.com/zeit/styled-jsx) as our compo
 
 ### Logo
 
-To create the Logo I used the logo I created in the design step, exported it to svg, optimized it with [SVG Optimizer](http://petercollingridge.appspot.com/svg-optimiser) and then used its markup in a React component. Now I can easily parameterize the logo using JSX!
+To create the [Logo](https://nightvision-kokplpifzt.now.sh/_src/?f=src%2Fcomponents%2FLogo.js) I used the logo I created in the design step, exported it to svg, optimized it with [SVG Optimizer](http://petercollingridge.appspot.com/svg-optimiser) and then used its markup in a React component. Now I can easily parameterize the logo using JSX!
 
 ```js
 import React from 'react';
@@ -123,6 +123,15 @@ export default ({ color = '#898F9A', className }) =>
 [Here](https://nightvision-kokplpifzt.now.sh/) is a live version of this step, and [here](https://nightvision-kokplpifzt.now.sh/_src) is the corresponding source code.
 
 ### Project
+
+In the [Project screen](https://nightvision-jnzqbqmpgq.now.sh/_src/?f=src%2Fpages%2FProject.js) I created a Header with a Logo and title, and a ScreenThumbnail.
+
+There is really not much to say about the Header other than it reuses the Logo component created earlier.
+
+It also has a Screens component that iterates over the available screens and renders a Screen component. This Screen component shows the screen image, its title and a timestamp.
+
+You can play with a live version in [here](https://nightvision-jnzqbqmpgq.now.sh/) and check its source [here](https://nightvision-jnzqbqmpgq.now.sh/_src).
+
 ### Screen
 
 # Add dynamism to components
