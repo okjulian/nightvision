@@ -132,6 +132,43 @@ It also has a Screens component that iterates over the available screens and ren
 
 You can play with a live version in [here](https://nightvision-jnzqbqmpgq.now.sh/) and check its source [here](https://nightvision-jnzqbqmpgq.now.sh/_src).
 
+### Routing
+
+In this project I wanted to use the brand new React Router 4, so I went ahead and did a `npm install react-router-dom --save`. Defining the routes was super easy, I only needed to wrap Screen and Project inside a Route. I wanted the Splash page to redirect to Project after 2 seconds, so I created a RedirectTimeout component that does just that, it wraps a component and you tell him how much time to wait and which route it should render after that period. App.js looks like this now:
+
+```js
+import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
+
+import Splash from './pages/Splash';
+import Project from './pages/Project';
+import RedirectTimeout from './components/RedirectTimeout';
+
+import '../node_modules/material-design-lite/dist/material.grey-pink.min.css';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <div>
+            <Route exact path="/" component={() => <RedirectTimeout to="project" timeout={2000}><Splash /></RedirectTimeout>} />
+            <Route path="/project" component={Project} />
+          </div>
+        </Router>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+See the magical redirection of Splash page [here](https://nightvision-ocbjzajfsc.now.sh) and its accompanying [source code](https://nightvision-ocbjzajfsc.now.sh/_src)
+
 ### Screen
 
 # Add dynamism to components
