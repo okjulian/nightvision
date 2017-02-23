@@ -170,6 +170,7 @@ export default App;
 See the magical redirection of Splash page [here](https://nightvision-ocbjzajfsc.now.sh) and its accompanying [source code](https://nightvision-ocbjzajfsc.now.sh/_src)
 
 ### Screen
+Adding Screen detail page allows the user to click a screen inside Project and see it in view mode or build mode. Implementing it was nothing special, except that I had to lift state from Project to App because Screen also needed it. The next step will be a fun one because I'll add the ability to draw hotspots in a screen.
 
 # Add dynamism to components
 Up until now we had only stateless components, now we'll decide where the state should live.

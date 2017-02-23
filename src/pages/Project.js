@@ -1,22 +1,12 @@
 import React from 'react';
 import moment from 'moment';
+import { withRouter } from 'react-router';
 
 import Logo from '../components/Logo';
 import colors from '../utils/colors';
 import media from '../utils/media';
 
-const project = {
-  name: 'Innovative Todo App',
-  screens: [
-    { title: 'Todos', filename: '1-Todos.png', createdAt: new Date(), image: '/assets/1-Todos.png' },
-    { title: 'Select todo', filename: '2-Select todo.png', createdAt: new Date(), image: '/assets/2-Select todo Thumb.png' },
-    { title: 'Edit todo', filename: '3-Edit todo.png', createdAt: new Date(), image: '/assets/3-Edit todo Thumb.png' },
-    { title: 'New todo', filename: '4-New todo.png', createdAt: new Date(), image: '/assets/4-New todo Thumb.png' },
-    { title: 'Filter completed todos', filename: '5-Filter completed todos.png', createdAt: new Date(), image: '/assets/5-Filter completed todos Thumb.png' },
-  ]
-};
-
-const Header = ({ title }) => <div className="Header" style={{ backgroundColor: colors.darkBlue }}>
+const Header = ({ title, onClick }) => <div className="Header" style={{ backgroundColor: colors.darkBlue }}>
   <Logo />
   <h2 className="Title">{title}</h2>
   <style jsx>{`
@@ -38,6 +28,11 @@ const Header = ({ title }) => <div className="Header" style={{ backgroundColor: 
       font-weight: 300;
       line-height: 34px;
     }
+    .Header :global(.Button) {
+      position: absolute;
+      bottom: -25px;
+      right: 50px;
+    }
     .Title {
       color: ${colors.white}
     }
@@ -55,8 +50,11 @@ const Content = ({ children }) => <div className="Content">
   `}</style>
 </div>;
 
-const Screen = ({ screen }) => <div className="Screen mdl-card mdl-shadow--2dp">
-  <img className="Image" src={screen.image} alt={`${screen.title}`} />
+const ScreenPreview = ({ screen, push }) => <div
+  onClick={ev => { ev.preventDefault(); push(`/screens/${screen.id}`); }}
+  className="Screen mdl-card mdl-shadow--2dp"
+>
+  <img className="Image" src={screen.thumbnail} alt={`${screen.title}`} />
   <div className="Title mdl-card__title">
     <h2 className="mdl-card__title-text">{screen.title}</h2>
   </div>
@@ -67,6 +65,7 @@ const Screen = ({ screen }) => <div className="Screen mdl-card mdl-shadow--2dp">
       display: flex;
       justify-content: center;
       text-align: center;
+      cursor: pointer;
     }
     .Image {
       background-color: ${colors.black};
@@ -92,8 +91,10 @@ const Screen = ({ screen }) => <div className="Screen mdl-card mdl-shadow--2dp">
   `}</style>
 </div>;
 
-const Screens = ({ screens = [] }) => <div className="Screens">
-  {screens.map(screen => <Screen key={Math.random()} screen={screen} />)}
+const LinkScreen = withRouter(ScreenPreview);
+
+const Screens = ({ screens = []}) => <div className="Screens">
+  {screens.map(screen => <LinkScreen key={screen.id} screen={screen} />)}
   <style jsx>{`
     .Screens {
       display: flex;
@@ -151,7 +152,7 @@ const Screens = ({ screens = [] }) => <div className="Screens">
   `}</style>
 </div>;
 
-export default () => <div className="Project">
+export default ({ project }) => <div className="Project">
   <Header title={project.name} />
   <Content>
     <Screens screens={project.screens} />
