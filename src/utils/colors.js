@@ -8,5 +8,8 @@ export default {
     darkGrey: '#47506e',
     white: '#fdfdfd',
     transparent: 'transparent',
-    black: '#2f2f2f;' // https://ianstormtaylor.com/design-tip-never-use-black
+    transparentBlue: 'rgba(0,173,255,.54)',
+    hotspotBlue: '#2A9FD8',
+    black: '#2f2f2f;', // https://ianstormtaylor.com/design-tip-never-use-black
+    lightBlack: '#e2e7ef'
 };
