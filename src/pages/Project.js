@@ -50,8 +50,8 @@ const Content = ({ children }) => <div className="Content">
   `}</style>
 </div>;
 
-const ScreenPreview = ({ screen, push }) => <div
-  onClick={ev => { ev.preventDefault(); push(`/screens/${screen.id}`); }}
+const ScreenPreview = ({ screen, history }) => <div
+  onClick={ev => { ev.preventDefault(); history.push(`/screens/${screen.id}`); }}
   className="Screen mdl-card mdl-shadow--2dp"
 >
   <img className="Image" src={screen.thumbnail} alt={`${screen.title}`} />
